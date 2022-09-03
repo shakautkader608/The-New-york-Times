@@ -33,17 +33,17 @@ const checkById=async(category_id)=>{
     const card=document.getElementById('card-element');
     card.textContent=''
     allNews.forEach(element => {
-        console.log(element,"gtjuyt")
+        const{image_url,title,details}=element;
         const newDiv=document.createElement('div')
         // card.innerHTML=''
        newDiv.classList.add('col');
        newDiv.innerHTML=`
        <div class="card">
-       <img src="${element.image_url}" class="card-img-top" alt="...">
+       <img src="${image_url}" class="card-img-top" alt="...">
        <div class="card-body">
        </div>
-         <h5 class="card-title">${element.title}</h5>
-         <p class="card-text">${element.details}</p>
+         <h5 class="card-title">${title}</h5>
+         <p class="card-text">${details.length>50? details.slice(0,150)+'...':'There is No Details Here'}</p>
        </div>
        </div>
        `;
