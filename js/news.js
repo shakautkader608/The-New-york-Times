@@ -41,6 +41,9 @@ const checkById=async(category_id)=>{
     // console.log(data.data);
     
     const allNews = data.data
+    allNews.sort((a,b)=>{
+      return b.total_view - a.total_view;
+    })
     const card=document.getElementById('card-element');
     card.textContent=''
     allNews.forEach(element => {
