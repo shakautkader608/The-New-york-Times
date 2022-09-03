@@ -56,8 +56,8 @@ const checkById=async(category_id)=>{
             <p class="m-0">${total_view?total_view:"Data Not Exist"}</p>
             </div>
             <div>
-            <button  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn"><i class="fa-solid fa-arrow-right text-dark"></i></button>
-             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="newsDetails" aria-hidden="true">
+            <button  data-bs-toggle="modal" data-bs-target="#key${_id}" class="btn"><i class="fa-solid fa-arrow-right text-dark"></i></button>
+             <div class="modal fade" id="key${_id}" tabindex="-1" aria-labelledby="newsDetails" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
