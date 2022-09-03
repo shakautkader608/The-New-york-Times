@@ -33,7 +33,8 @@ const checkById=async(category_id)=>{
     const card=document.getElementById('card-element');
     card.textContent=''
     allNews.forEach(element => {
-        const{image_url,title,details}=element;
+        console.log(element)
+        const{image_url,title,details,total_view,author,_id}=element;
         const newDiv=document.createElement('div')
         // card.innerHTML=''
        newDiv.classList.add('col');
@@ -44,7 +45,35 @@ const checkById=async(category_id)=>{
        </div>
          <h5 class="card-title">${title}</h5>
          <p class="card-text">${details.length>50? details.slice(0,150)+'...':'There is No Details Here'}</p>
-       </div>
+
+         <div class="d-flex justify-content-around align-items-center mb-2">
+            <div class="d-flex align-items-center ">
+            <img src="${author.img}" class="img-fluid  rounded-circle img space " alt="...">
+            <p class="m-0">${author.name?author.name:"Data Not Exist"}</p>
+            </div>
+            <div class="d-flex align-items-center">
+            <i class="fa-solid fa-eye space"></i>
+            <p class="m-0">${total_view?total_view:"Data Not Exist"}</p>
+            </div>
+            <div>
+            <button  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn"><i class="fa-solid fa-arrow-right text-dark"></i></button>
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="newsDetails" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newsDetails">${title}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body"><img src="${image_url}" class="card-img-top" alt="..."></div>
+              <div class="modal-footer">
+              <p class="card-text">${details}</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+         <div>
        </div>
        `;
        card.appendChild(newDiv)
@@ -53,5 +82,5 @@ const checkById=async(category_id)=>{
     });
 }
 
-checkById()
+
 
