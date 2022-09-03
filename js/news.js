@@ -9,37 +9,48 @@ const SetAllMenu=async()=>{
     const menu=document.getElementById('news-menu');
     const totalnews = data.data.news_category
     totalnews.forEach(news => {
-        console.log(news.category_name)
-        console.log(
-            news.category_id
-        )
+        
         const li=document.createElement('li');
         li.innerHTML=`
         <li onclick=checkById('${news.category_id}') class="nav-item">
                   <a class="nav-link" href="#">${news.category_name}</a>
         </li>
         `;
+       
         menu.appendChild(li)
+        
     });
+    
 }
 
 SetAllMenu()
 
+
 const checkById=async(category_id)=>{
     const res=await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
     const data= await res.json();
-    console.log(data.data);
+    console.log(data.data)
+    const countNews=(data.data.length)
+    const value0fNews=document.getElementById('news-count');
+    value0fNews.textContent=''
+    const p=document.createElement('p')
+    p.innerHTML=`
+    ${countNews==0?'No News Found':countNews+" News Found"} 
+    `;
+    value0fNews.appendChild(p)
+    // console.log(data.data);
+    
     const allNews = data.data
     const card=document.getElementById('card-element');
     card.textContent=''
     allNews.forEach(element => {
-        console.log(element)
+        // console.log(element)
         const{image_url,title,details,total_view,author,_id}=element;
         const newDiv=document.createElement('div')
         // card.innerHTML=''
        newDiv.classList.add('col');
        newDiv.innerHTML=`
-       <div class="card">
+       <div class="card p-2">
        <img src="${image_url}" class="card-img-top" alt="...">
        <div class="card-body">
        </div>
@@ -78,9 +89,12 @@ const checkById=async(category_id)=>{
        `;
        card.appendChild(newDiv)
 
-
+      
     });
+    
 }
+
+
 
 
 checkById('01')
