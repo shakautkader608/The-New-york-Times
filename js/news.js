@@ -35,7 +35,7 @@ const checkById=async(category_id)=>{
     value0fNews.textContent=''
     const p=document.createElement('p')
     p.innerHTML=`
-    {countNews==0?'No News Found':countNews+" News Found"} 
+    ${countNews==0?'No News Found':countNews+" News Found"} 
     `;
     value0fNews.appendChild(p)
     // console.log(data.data);
