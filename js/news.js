@@ -83,4 +83,6 @@ const checkById=async(category_id)=>{
 }
 
 
+checkById('01')
+
 
